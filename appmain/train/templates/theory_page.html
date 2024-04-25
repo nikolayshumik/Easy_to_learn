@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Теория</title>
+</head>
+<body>
+
+<p>Страничка с теорией</p>
+    <ul>
+        <li><a href="{% url 'topic_page' topic='topic1' %}">Тема 1</a></li>
+        <li><a href="{% url 'topic_page' topic='topic2' %}">Тема 2</a></li>
+        <li><a href="{% url 'topic_page' topic='topic3' %}">Тема 3</a></li>
+        <li><a href="{% url 'topic_page' topic='topic4' %}">Тема 4</a></li>
+        <li><a href="{% url 'topic_page' topic='topic5' %}">Тема 5</a></li>
+        <li><a href="{% url 'topic_page' topic='topic6' %}">Тема 6</a></li>
+        <!-- Добавьте ссылки для других тем по аналогии -->
+    </ul>
+<a href="{% url 'dialog_display' %}">Диалоговое окно</a>
+</body>
+</html>

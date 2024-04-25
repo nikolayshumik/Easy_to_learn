@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Full viewport height */
+            margin: 0;
+        }
+
+        button {
+            padding: 10px;
+            width: 200px; /* Set a fixed width for the buttons */
+            background-color: #3498db;
+            color: white;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p style="margin-left: 40px;">Учиться Легко</p>
+        <form action="{% url 'register' %}">
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+        <form action="{% url 'login_my' %}">
+            <button type="submit">Войти</button>
+        </form>
+    </div>
+</body>
+</html>
