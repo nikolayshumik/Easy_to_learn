@@ -5,7 +5,7 @@ from .forms import CustomUserCreationForm, LoginForm
 from django.contrib.auth import logout
 from django.views.generic import TemplateView
 
-from .tes import convert_docx_to_html
+from .models import Topic_to_learn, Tests_to_do
 
 
 # Create your views here.
@@ -22,24 +22,19 @@ def main_page(request):
     return render(request, 'main_page.html')
 
 def theory_page(request):
-    return render(request, 'theory_page.html')
-def topic_page(request, topic):
-    if topic == 'topic1':
-        # Путь к файлу .docx для текущей темы
-        docx_file_path = f'D:/КОЛЯМБА/НикитаДиплом/кинематика/теория/кинематика теория.docx'
-
-        # Преобразуем содержимое .docx в HTML
-        html_content = convert_docx_to_html(docx_file_path)
-
-        return render(request, 'topic_page.html', {'topic': topic, 'html_content': html_content})
-    else:
-
-        return render(request, 'topic_page.html', {'topic': topic})
+    topics = Topic_to_learn.objects.all
+    return render(request, 'theory_page.html', {'topics': topics})
+def topic_page(request, topic_id):
+    topic = Topic_to_learn.objects.get(id=topic_id)
+    return render(request, 'topic_page.html', {'topic': topic})
 def tusks_page(request):
     return render(request, 'tusks_page.html')
 def test_page(request):
-    return render(request, 'test_page.html')
-
+    tests = Tests_to_do.objects.all
+    return render(request, 'test_page.html', {'tests': tests})
+def test_chosen(request, test_id):
+    test = Tests_to_do.objects.get(id=test_id)
+    return render(request, 'test_chosen.html', {'test': test})
 def formuls_page(request):
     return render(request, 'formuls_page.html')
 

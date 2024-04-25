@@ -8,6 +8,11 @@
 
 
 <p>Страничка с тестами</p>
+<ul>
+{% for test in tests %}
+    <li><a href="{% url 'test_chosen' test_id=test.id %}">{{ test.title }}</a></li>
+{% endfor %}
+</ul>
 <a href="{% url 'dialog_display' %}">Диалоговое окно</a>
 </body>
 </html>

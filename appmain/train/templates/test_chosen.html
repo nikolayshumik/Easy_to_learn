@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .answer-container {
+    position: relative;
+}
+
+.blurred-answer {
+    position: relative;
+    padding: 20px;
+    background-color: #f0f0f0;
+    backdrop-filter: blur(10px);
+}
+
+.answer-text {
+    display: none;
+}
+
+.reveal-btn {
+    display: block;
+    margin: 0 auto;
+}
+
+</style>
+
+<body>
+ <h1>{{ test.title }}</h1>
+ <p>{{test.description}}</p>
+ {% if test.image %}
+    <img src="{{ test.image.url }}" alt="{{ test.title }}">
+{% endif %}
+<div class="answer-container">
+    {% if test.answer %}
+        <div class="blurred-answer">
+            <button class="reveal-btn">Показать ответ</button>
+        </div>
+        <p class="answer-text">{{ test.answer }}</p>
+    {% endif %}
+</div>
+ <a href="{% url 'dialog_display' %}">Диалоговое окно</a>
+<script>
+    document.querySelectorAll('.reveal-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        btn.parentElement.style.display = 'none';
+        btn.parentElement.nextElementSibling.style.display = 'block';
+    });
+});
+</script>
+</body>
+</html>

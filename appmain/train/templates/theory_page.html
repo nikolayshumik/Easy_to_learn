@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,15 +8,13 @@
 <body>
 
 <p>Страничка с теорией</p>
-    <ul>
-        <li><a href="{% url 'topic_page' topic='topic1' %}">Тема 1</a></li>
-        <li><a href="{% url 'topic_page' topic='topic2' %}">Тема 2</a></li>
-        <li><a href="{% url 'topic_page' topic='topic3' %}">Тема 3</a></li>
-        <li><a href="{% url 'topic_page' topic='topic4' %}">Тема 4</a></li>
-        <li><a href="{% url 'topic_page' topic='topic5' %}">Тема 5</a></li>
-        <li><a href="{% url 'topic_page' topic='topic6' %}">Тема 6</a></li>
-        <!-- Добавьте ссылки для других тем по аналогии -->
-    </ul>
+<ul>
+{% for topic in topics %}
+    <li><a href="{% url 'topic_page' topic_id=topic.id %}">{{ topic.title }}</a></li>
+{% endfor %}
+</ul>
+
+
 <a href="{% url 'dialog_display' %}">Диалоговое окно</a>
 </body>
 </html>
